@@ -1,0 +1,16 @@
+syntax="proto3";
+
+package com.test.service;
+
+option java_package="com.pccc.touda.test.grpc.pb.service";
+option java_multiple_files=true;
+
+import "entity/UserRequest.proto";
+import "entity/UserResponse.proto";
+
+service UserService {
+    rpc createUser(com.test.entity.UserRequest) returns (com.test.entity.UserResponse) {};
+}
+
+
+

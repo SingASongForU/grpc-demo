@@ -1,0 +1,12 @@
+syntax="proto3";
+
+package com.test.entity;
+
+option java_package="com.pccc.touda.test.grpc.pb.entity";
+option java_multiple_files=true;
+
+message UserResponse{
+    string id=1;
+    string code=2;
+    string msg=3;
+}

@@ -1,0 +1,9 @@
+syntax="proto3";
+
+option java_package="com.pccc.touda.grpc.test";
+option java_multiple_files=true;
+
+message HelloResponse{
+    string response_code=1;
+    string response_message=2;
+}

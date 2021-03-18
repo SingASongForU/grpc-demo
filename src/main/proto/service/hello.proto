@@ -1,0 +1,16 @@
+syntax="proto3";
+
+package com.test.service;
+
+option java_package="com.pccc.touda.test.grpc.pb.service";
+option java_multiple_files=true;
+
+import "entity/request.proto";
+import "entity/response.proto";
+
+service HelloService {
+  rpc sayHello(com.test.entity.HelloRequest) returns (com.test.entity.HelloResponse) {};
+}
+
+
+

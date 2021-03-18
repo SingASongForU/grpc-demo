@@ -1,0 +1,11 @@
+syntax="proto3";
+
+package com.test.entity;
+
+option java_package="com.pccc.touda.test.grpc.pb.entity";
+option java_multiple_files=true;
+
+message HelloResponse{
+    string response_code=1;
+    string response_message=2;
+}
