@@ -1,7 +1,7 @@
 .classpath
 .idea/
 .project
-grpc.eml
-grpc.iml
+*.eml
+*.iml
 target/
 testgrpc.userlibraries
