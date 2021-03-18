@@ -6,17 +6,17 @@ import com.pccc.touda.test.grpc.pb.service.HelloServiceGrpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class GrpcClient {
     private final ManagedChannel channel;
     private final HelloServiceGrpc.HelloServiceBlockingStub blockingStub;
 
-    private static final Logger logger = Logger.getLogger(ToudaGrpcClient.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(GrpcClient.class);
 
     public GrpcClient(String host,int port){
         channel = ManagedChannelBuilder.forAddress(host,port)
@@ -37,10 +37,11 @@ public class GrpcClient {
             response = blockingStub.sayHello(request);
         } catch (StatusRuntimeException e)
         {
-            logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
+            logger.warn("RPC failed: {}", e.getStatus());
             return;
         }
-        logger.info("Response code :"+response.getResponseCode()+",Response msg : "+response.getResponseMessage());
+        logger.info("Response code : {}, Response msg : {}"
+                ,response.getResponseCode(),response.getResponseMessage());
     }
 
     public static void main(String[] args) throws InterruptedException {
