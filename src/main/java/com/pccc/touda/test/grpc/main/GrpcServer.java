@@ -2,12 +2,13 @@ package com.pccc.touda.test.grpc.main;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.util.logging.Logger;
 
 public class GrpcServer {
-    private static final Logger logger = Logger.getLogger(GrpcServer.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(GrpcServer.class);
 
     private Server server;
 
@@ -27,12 +28,12 @@ public class GrpcServer {
                 .addService(new UserServiceImpl())
                 .build()
                 .start();
-        logger.info("Server started, listening on " + port);
+        logger.info("Server started, listening on {}" , port);
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             // Use stderr here since the logger may have been reset by its JVM shutdown hook.
-            System.err.println("*** shutting down gRPC server since JVM is shutting down");
+            logger.info("*** shutting down gRPC server since JVM is shutting down");
             GrpcServer.this.stop();
-            System.err.println("*** server shut down");
+            logger.info("*** server shut down");
         }));
     }
 
