@@ -12,9 +12,9 @@ public class GrpcServer {
 
     private Server server;
 
-    private int port;
+    private final int port;
 
-    private String serverName;
+    private final String serverName;
 
     public GrpcServer(String serverName,int port){
         this.serverName=serverName;

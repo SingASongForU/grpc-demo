@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.pccc.touda.test</groupId>
-    <artifactId>testgrpc</artifactId>
+    <artifactId>grpc-demo</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -84,8 +84,8 @@
                 <version>3.8.1</version>
                 <configuration>
                     <!--JDK版本-->
-                    <source>15</source>
-                    <target>15</target>
+                    <source>13</source>
+                    <target>13</target>
                 </configuration>
             </plugin>
 

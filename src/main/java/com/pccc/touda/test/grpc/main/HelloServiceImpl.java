@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
  */
 public class HelloServiceImpl extends HelloServiceGrpc.HelloServiceImplBase{
     private static final Logger logger = LoggerFactory.getLogger(HelloServiceImpl.class);
-    private String serverName;
+    private final String serverName;
     public HelloServiceImpl(String serverName){
         this.serverName=serverName;
     }
