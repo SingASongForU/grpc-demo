@@ -2,6 +2,5 @@
 .idea/
 .project
 *.eml
-*.iml
 target/
 testgrpc.userlibraries
