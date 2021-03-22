@@ -1,0 +1,11 @@
+syntax="proto3";
+
+option java_package="com.pccc.touda.grpc.test";
+option java_multiple_files=true;
+
+import "streamRequest.proto";
+import "helloStreamResponse.proto";
+
+service HelloStreamService {
+    rpc saveImage(stream HelloStreamRequest) returns (HelloStreamResponse) {};
+}

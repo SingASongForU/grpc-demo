@@ -2,19 +2,18 @@ package com.pccc.touda.test.grpc.main;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 public class GrpcServer {
-    private static final Logger logger = LoggerFactory.getLogger(GrpcServer.class);
+    private static final Logger logger = Logger.getLogger(GrpcServer.class.getName());
 
     private Server server;
 
-    private final int port;
+    private int port;
 
-    private final String serverName;
+    private String serverName;
 
     public GrpcServer(String serverName,int port){
         this.serverName=serverName;
@@ -26,14 +25,17 @@ public class GrpcServer {
         server = ServerBuilder.forPort(port)
                 .addService(new HelloServiceImpl(serverName))
                 .addService(new UserServiceImpl())
+                .addService(new HelloStreamServiceImpl())
+                .addService(new HelloServerStreamImpl())
+                .addService(new HelloDoubleStreamImpl())
                 .build()
                 .start();
-        logger.info("Server started, listening on {}" , port);
+        logger.info("Server started, listening on " + port);
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             // Use stderr here since the logger may have been reset by its JVM shutdown hook.
-            logger.info("*** shutting down gRPC server since JVM is shutting down");
+            System.err.println("*** shutting down gRPC server since JVM is shutting down");
             GrpcServer.this.stop();
-            logger.info("*** server shut down");
+            System.err.println("*** server shut down");
         }));
     }
 
