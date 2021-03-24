@@ -25,7 +25,8 @@ public class GrpcBorrowBookClient {
 
     public void getBooksBySize(int size) {
         HelloServerStreamRequest request = HelloServerStreamRequest.newBuilder().setSize(size).build();
-        Iterator<HelloServerStreamResponse> helloServerStreamResponseIterator = helloServerStreamServiceStub.getBooksBySize(request);
+        Iterator<HelloServerStreamResponse> helloServerStreamResponseIterator = helloServerStreamServiceStub
+                .getBooksBySize(request);
         while (helloServerStreamResponseIterator.hasNext()) {
             HelloServerStreamResponse response = helloServerStreamResponseIterator.next();
             System.err.println(response.getBookname());

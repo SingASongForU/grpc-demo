@@ -39,6 +39,8 @@ public class GrpcImageUploadClient {
                                 System.err.println("ID:"+helloStreamResponse.getImageId());
                                 System.err.println("PATH:"+helloStreamResponse.getImagePath());
                                 System.err.println("SIZE:"+helloStreamResponse.getTotalSize());
+                                System.err.println("code:"+helloStreamResponse.getResponseCode());
+                                System.err.println("msg:"+helloStreamResponse.getResponseMessage());
                             }
 
                             @Override
@@ -55,7 +57,6 @@ public class GrpcImageUploadClient {
                         });
         readAndAsyncSend(getFileType(PATH_FILE_CLIENT),streamRequestStreamObserver, getFileInputStream(PATH_FILE_CLIENT));
         countDownLatch.await(10, TimeUnit.SECONDS);
-
     }
 
     private String getFileType(String pathFileClient) {

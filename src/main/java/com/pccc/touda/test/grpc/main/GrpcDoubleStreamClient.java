@@ -50,7 +50,7 @@ public class GrpcDoubleStreamClient {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        List<Integer> sizeList= Lists.newArrayList(1,2,3,4);
+        List<Integer> sizeList= Lists.newArrayList(2,2,3,4);
         new GrpcDoubleStreamClient("127.0.0.1",8099).getBooksBySizes(sizeList);
     }
 }
